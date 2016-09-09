@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>teditor编辑器</title>
+    <link rel="stylesheet" href="teditor.css" />
+</head>
+<body>
+    <div class="teditor-box" id="teditor">
+       <div class="teditor-box-tool">
+           <a href="javascript:;" type="bold">bold</a>
+           <a href="javascript:;" type="bold2">bold2</a>
+           <a href="javascript:;" type="link">link</a>
+           <a href="javascript:;" type="unbold">unbold</a>
+       </div>
+       <div class="teditor-box-body">
+          <iframe class="teditor-frame" id="frame"></iframe>
+       </div>
+    </div>
+	<script src="teditor.js"></script>
+	<script src="plugins/bold.js"></script>
+	<script src="plugins/link.js"></script>
+	<script>
+	    new teditor("teditor");
+	</script>
+</body>
+</html>
