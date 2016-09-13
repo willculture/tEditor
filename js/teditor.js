@@ -41,12 +41,10 @@
 				if (childs[i].contains(sc)) {
 					jage = true;
 				}
-				if (jage) {
-					console.log(i)
+				if (jage) { 
 					select.push(childs[i]);
 				}
-				if (childs[i].contains(ec)) {
-					console.log("end")
+				if (childs[i].contains(ec)) { 
 					jage = false;
 					break;
 				}
@@ -62,7 +60,7 @@
 			this.framedoc = this.frame.contentDocument;
 			this.framebd = this.framedoc.body;
 			this.framebd.style.height = "100%";
-			this.framebd.innerHTML = "<strong>hello</strong><h3>fdsfsdfsdfds</h3>"
+			this.framebd.innerHTML = "<strong>he<em>ll</em>o</strong><h3><span>中国是个<em>社会fsdfs<i>dfs</i>dfsdfsd主义</em>国家<b>this is test</b></span>， 这<time>样好</time>吗？</h3>"
 			this.framebd.setAttribute("contenteditable", "true");
 
 			// 初始化焦点
@@ -76,10 +74,10 @@
 			this.tool = this.editor.querySelector(".teditor-box-tool");
 			var item = this.tool.querySelectorAll("a");
 			var self = this;
-			item.forEach(function(single) {
-				single.onclick = self.fnlist[single.getAttribute("type")]
-						.bind(self);
-			});
+			for(var i = 0; i < item.length; i++) {
+			    var single = item[i];
+				single.onclick = self.fnlist[single.getAttribute("type")].bind(self);
+			}
 
 			return this;
 		}
