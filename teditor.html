@@ -1,28 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>teditor编辑器</title>
-    <link rel="stylesheet" href="teditor.css" />
+<meta charset="UTF-8" />
+<title>teditor编辑器</title>
+<link rel="stylesheet" href="teditor.css" />
 </head>
 <body>
-    <div class="teditor-box" id="teditor">
-       <div class="teditor-box-tool">
-           <a href="javascript:;" type="bold">bold</a>
-           <a href="javascript:;" type="bold2">bold2</a>
-           <a href="javascript:;" type="link">link</a>
-           <a href="javascript:;" type="unbold">unbold</a>
-       </div>
-       <div class="teditor-box-body">
-          <iframe class="teditor-frame" id="frame"></iframe>
-       </div>
-    </div>
+	<div class="teditor-box" id="teditor">
+		<div class="teditor-box-tool">
+			<a href="javascript:;" type="bold">bold</a> <a href="javascript:;"
+				type="bold2">bold2</a> <a href="javascript:;" type="link">link</a> <a
+				href="javascript:;" type="unbold">unbold</a>
+		</div>
+		<div class="teditor-box-body">
+			<iframe class="teditor-frame" id="frame"></iframe>
+		</div>
+	</div>
+	<script src="js/nodewalker.js"></script>
 	<script src="js/teditor.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="plugins/bold.js"></script>
 	<script src="plugins/link.js"></script>
 	<script>
-	    new teditor("teditor");
+		var k1 = 1;
+		var k2 = 4;
+		console.log(k1 | k2)
+		var c = {
+			// ELEMENT_NODE
+			1 : 1,
+			// ATTRIBUTE_NODE
+			2 : 2,
+			// TEXT_NODE
+			3 : 4,
+			// COMMENT_NODE
+			8 : 128,
+			// DOCUMENT_NODE
+			9 : 256,
+			// DOCUMENT_FRAGMENT_NODE
+			11 : 1024
+		};
+
+		console.log(k1 | k2, c[(k1 | k2)])
+		new teditor("teditor");
 	</script>
 </body>
 </html>

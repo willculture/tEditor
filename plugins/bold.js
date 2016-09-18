@@ -2,18 +2,35 @@
  * 粗体设置
  */
 teditor.addPlugin("bold", function() {
-	// var sl = utils.getSelectedNodes(this.selection);
-	var node = this.getSelectNode();
 
-	node.forEach(function(item) {
-		 var df = document.createDocumentFragment();
-		 var clone = item.cloneNode();
-		 var child = item.getELementsByTagName("strong");
-		 for (var i = 0; i < child.length; i++) {
-			 
-			 clone.appendChild()
-		 }
-		 
-	})
+    var range = this.selection.getRangeAt(0);
+	var walk = new NodeWalker(
+			range.commonAncestorContainer, SHOW_ELEMENT
+					| SHOW_TEXT);
+	 
+	var startNode = range.startContainer;
+	var endNode = range.endContainer;
+	var startOffset = range.startOffset;
+	var endOffset = range.endOffset;
+	
+	if(range.collapsed) {
+		var span = document.createElement("span");
+		span.style.fontWeight = "bold";
+		span.appendChild(document.createTextNode(" "))
+		range.insertNode(span);
+		range.selectNode(span)
+		this.selection.collapse(span, true);
+	}
+	
+	/*
+	do {
+		
+		node = walk.currentNode;
+		console.log(node)
+		
+	} while (walk.nextNode()) */
+	
+	
+	// this.changeFormat("span", {fontWeight: "bold"});
 
 })
