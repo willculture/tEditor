@@ -22,7 +22,7 @@ function excontent() {
 	var range = selection.getRangeAt(0);
 	console.log(range.extractContents())
 	console.log(range)
-		var st = document.createElement("strong");
+	var st = document.createElement("strong");
 	st.appendChild(document.createTextNode("this is test"))
 	range.insertNode(st)
 }
@@ -34,13 +34,26 @@ function clientRect() {
 }
 
 function compRange(type) {
-	var range = selection.getRangeAt(0);
-	var node = document.querySelector("strong");
-   
+	
+	var span = document.querySelector("p");
+	var range = document.createRange();
+	range.selectNode(span);
+ 
+	var node = document.querySelector("strong"); 
 	var crange = node.ownerDocument.createRange();
 	
 	crange.selectNode(node);
 	var index = range.compareBoundaryPoints(type, crange);
 	console.log(index)
 	return index;
+}
+
+function setSelection() {
+	var range = selection.getRangeAt(0);
+	var node = document.querySelector("strong");
+	range.setStartBefore(node);
+	range.setEndAfter(node);
+	 
+	range.collapse(false);
+	selection.collapse(node, node.childNodes.length);
 }
